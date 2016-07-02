@@ -19,3 +19,27 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Where things are
+include: ["_pages"]
+sass:
+  sass_dir: assets/scss
+  style: :compressed
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - README.md
+  - CNAME
+  - node_modules
+  - gulpfile.js
+
+# Plugin settings
+gems:
+  - jekyll-feed
+  - jekyll-sitemap
