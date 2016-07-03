@@ -5,9 +5,9 @@ var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
 
 var settings = {
-    sass_dir: '/assets/sass',
-    sass_main: '/assets/sass/main.scss',
-    css_dir: '/assets/css'
+    sass_dir: 'assets/sass',
+    sass_main: 'assets/sass/main.scss',
+    css_dir: 'assets/css'
 };
 
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
@@ -48,11 +48,11 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
 gulp.task('sass', function () {
     return gulp.src(settings.sass_main)
         .pipe(sass({
-            includePaths: ['scss'],
+            includePaths: ['assets/sass'],
             onError: browserSync.notify
         }))
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-        .pipe(gulp.dest('_site' + settings.css_dir))
+        .pipe(gulp.dest('_site/' + settings.css_dir))
         .pipe(browserSync.reload({stream:true}))
         .pipe(gulp.dest(settings.css_dir));
 });
@@ -62,7 +62,7 @@ gulp.task('sass', function () {
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch( settings.sass_dir + '/**/*.scss', ['sass']);
+    gulp.watch('./assets/sass/**/*.scss', ['sass']);
     gulp.watch([
         '**/*.html', 
         '!_site/**/*.html'
