@@ -1,6 +1,7 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync');
 var sass        = require('gulp-sass');
+var plumber     = require('gulp-plumber');
 var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
 
@@ -47,6 +48,7 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
  */
 gulp.task('sass', function () {
     return gulp.src(settings.sass_main)
+        .pipe(plumber())
         .pipe(sass({
             includePaths: ['assets/sass'],
             onError: browserSync.notify
