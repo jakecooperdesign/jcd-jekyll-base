@@ -25,9 +25,6 @@ kramdown:
 
 # Where things are
 include: ["_pages"]
-sass:
-  sass_dir: assets/sass
-  style: :compressed
 
 # Build settings
 exclude:
