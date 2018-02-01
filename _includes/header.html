@@ -1,11 +1,24 @@
-<header class="site__header">
-	<nav class="site__nav">
-		<ul class="list--inline">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Posts</a></li>
-			<li><a href="#">Pages</a></li>
-			<li><a href="#">Contac</a></li>
-		</ul>
+<header class="site-header">
+	<nav class="navbar is-primary">
+		<div class="container">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="{{ site.url }}">
+					{{site.title}}
+				</a>
+				<div class="navbar-burger burger">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+			
+			<div class="navbar-menu">
+				<div class="navbar-end">
+					{% for link in site.nav %}
+					<a href="{{link.url}}" class="navbar-item">{{link.label}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
 	</nav>
 </header>
